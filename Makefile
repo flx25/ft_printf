@@ -6,7 +6,7 @@
 #    By: fvon-nag <fvon-nag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 13:59:11 by fvon-nag          #+#    #+#              #
-#    Updated: 2023/01/10 14:09:35 by fvon-nag         ###   ########.fr        #
+#    Updated: 2023/01/10 16:13:52 by fvon-nag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ NAME = libftprintf.a
 SOURCES := libftprintf.c\
 			printint.c\
 			printpointer.c\
-			printunsignedint.c
+			printunsignedint.c\
+			printhex.c
 
 
 OBJECTS = $(SOURCES:.c=.o)
@@ -34,7 +35,4 @@ clean :
 fclean : clean
 	rm -f $(NAME) $(NAME).a
 re : fclean all
-
-test: $(NAME)
-	$(CC) $(CFLAGS) -o ${NAME} ${OBJECTS}
 

@@ -6,7 +6,7 @@
 /*   By: fvon-nag <fvon-nag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:08:04 by fvon-nag          #+#    #+#             */
-/*   Updated: 2023/01/10 14:08:59 by fvon-nag         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:12:26 by fvon-nag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	format(char c, va_list *vl, int *wlen)
 		printpointer(va_arg(*vl, void *), wlen);
 	if (c == 'u')
 		printunsignedint(va_arg(*vl, unsigned int), 1, wlen);
+	if (c == 'x' || c == 'X')
+		printhex(c, va_arg(*vl, unsigned int), wlen);
 	if (c == '%')
 		putchar('%', wlen);
 }
@@ -70,7 +72,6 @@ int	ft_printf(const char *fmt, ...)
 	int		wlen;
 
 	wlen = 0;
-
 	i = 0;
 	va_start(vl, fmt);
 	while (fmt && fmt[i])
@@ -89,13 +90,3 @@ int	ft_printf(const char *fmt, ...)
 	va_end(vl);
 	return (wlen);
 }
-
-// int	main(void)
-// {
-// 	char	p;
-// 	char	*pt;
-
-// 	pt = &p;
-// 	p = 'p';
-// 	ft_printf("test%c %s %i %p", p, "test", -10, pt);
-// }

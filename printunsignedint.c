@@ -6,7 +6,7 @@
 /*   By: fvon-nag <fvon-nag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:05:11 by fvon-nag          #+#    #+#             */
-/*   Updated: 2023/01/10 14:17:25 by fvon-nag         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:13:34 by fvon-nag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void	writedigits(unsigned int n, int fd, int *wlen)
 
 void	printunsignedint(unsigned int n, int fd, int *wlen)
 {
-
 	if (n == 0)
 	*wlen += write(fd, "0", 1);
 	else

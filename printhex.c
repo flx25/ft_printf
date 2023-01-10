@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printpointer.c                                     :+:      :+:    :+:   */
+/*   printhex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fvon-nag <fvon-nag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 10:35:40 by fvon-nag          #+#    #+#             */
-/*   Updated: 2023/01/10 16:13:24 by fvon-nag         ###   ########.fr       */
+/*   Created: 2023/01/10 15:47:47 by fvon-nag          #+#    #+#             */
+/*   Updated: 2023/01/10 16:13:03 by fvon-nag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <unistd.h>
 
-static void	writedigits(unsigned long n, int fd, int *wlen)
+static void	writedigitslowc(unsigned long n, int fd, int *wlen)
 {
 	char	c;
 
 	if (n >= 16)
 	{
-		writedigits(n / 16, fd, wlen);
-		writedigits(n % 16, fd, wlen);
+		writedigitslowc(n / 16, fd, wlen);
+		writedigitslowc(n % 16, fd, wlen);
 	}
 	else
 	{
@@ -29,8 +29,26 @@ static void	writedigits(unsigned long n, int fd, int *wlen)
 	}
 }
 
-void	printpointer(void *ptr, int *wlen)
+static void	writedigitsupc(unsigned long n, int fd, int *wlen)
 {
-	*wlen += write(1, "0x", 2);
-	writedigits((unsigned long) ptr, 1, wlen);
+	char	c;
+
+	if (n >= 16)
+	{
+		writedigitsupc(n / 16, fd, wlen);
+		writedigitsupc(n % 16, fd, wlen);
+	}
+	else
+	{
+		c = "0123456789ABCDEF"[n % 16];
+		*wlen += write(fd, &c, 1);
+	}
+}
+
+void	printhex(char c, unsigned int hex, int *wlen)
+{
+	if (c == 'X')
+		writedigitsupc((unsigned long) hex, 1, wlen);
+	if (c == 'x')
+		writedigitslowc((unsigned long) hex, 1, wlen);
 }
