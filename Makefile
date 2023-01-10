@@ -6,16 +6,17 @@
 #    By: fvon-nag <fvon-nag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 13:59:11 by fvon-nag          #+#    #+#              #
-#    Updated: 2023/01/10 10:30:50 by fvon-nag         ###   ########.fr        #
+#    Updated: 2023/01/10 11:26:50 by fvon-nag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-NAME = libftprintf
+NAME = libftprintf.a
 
 SOURCES := libftprintf.c\
-			printint.c
+			printint.c\
+			printpointer.c
 
 
 OBJECTS = $(SOURCES:.c=.o)
