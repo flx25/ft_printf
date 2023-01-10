@@ -6,7 +6,7 @@
 /*   By: fvon-nag <fvon-nag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:08:04 by fvon-nag          #+#    #+#             */
-/*   Updated: 2023/01/10 13:15:42 by fvon-nag         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:22:20 by fvon-nag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	format(char c, va_list *vl, int *wlen)
 		putchar(va_arg(*vl, int), wlen);
 	if (c == 's')
 		printstring(vl, wlen);
-	if (c == 'i')
+	if (c == 'i' || c == 'd')
 		printint(va_arg(*vl, int), 1, wlen);
 	if (c == 'p')
 		printpointer(va_arg(*vl, void *), wlen);
