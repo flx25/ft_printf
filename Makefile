@@ -6,15 +6,16 @@
 #    By: fvon-nag <fvon-nag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 13:59:11 by fvon-nag          #+#    #+#              #
-#    Updated: 2023/01/09 17:13:49 by fvon-nag         ###   ########.fr        #
+#    Updated: 2023/01/10 10:30:50 by fvon-nag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-NAME = libftprintf.a
+NAME = libftprintf
 
-SOURCES := libftprintf.c
+SOURCES := libftprintf.c\
+			printint.c
 
 
 OBJECTS = $(SOURCES:.c=.o)
@@ -27,7 +28,11 @@ $(NAME) : ${OBJECTS}
 all: ${NAME}
 
 clean :
-	rm -f $(OBJECTS) $(BOBJECTS)
+	rm -f $(OBJECTS)
 fclean : clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME).a
 re : fclean all
+
+test: $(NAME)
+	$(CC) $(CFLAGS) -o ${NAME} ${OBJECTS}
+
