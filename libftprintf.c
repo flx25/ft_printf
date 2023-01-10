@@ -6,13 +6,13 @@
 /*   By: fvon-nag <fvon-nag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:08:04 by fvon-nag          #+#    #+#             */
-/*   Updated: 2023/01/10 13:22:20 by fvon-nag         ###   ########.fr       */
+/*   Updated: 2023/01/10 14:08:59 by fvon-nag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include <unistd.h>
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_strlen(const char *str)
 {
@@ -57,6 +57,8 @@ void	format(char c, va_list *vl, int *wlen)
 		printint(va_arg(*vl, int), 1, wlen);
 	if (c == 'p')
 		printpointer(va_arg(*vl, void *), wlen);
+	if (c == 'u')
+		printunsignedint(va_arg(*vl, unsigned int), 1, wlen);
 	if (c == '%')
 		putchar('%', wlen);
 }

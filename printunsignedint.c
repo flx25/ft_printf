@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printint.c                                         :+:      :+:    :+:   */
+/*   printunsignedint.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fvon-nag <fvon-nag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 10:25:18 by fvon-nag          #+#    #+#             */
-/*   Updated: 2023/01/10 13:38:52 by fvon-nag         ###   ########.fr       */
+/*   Created: 2023/01/10 14:05:11 by fvon-nag          #+#    #+#             */
+/*   Updated: 2023/01/10 14:17:25 by fvon-nag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <limits.h>
 #include "ft_printf.h"
 
-static void	writedigits(int n, int fd, int *wlen)
+static void	writedigits(unsigned int n, int fd, int *wlen)
 {
 	char	c;
 
@@ -31,20 +31,11 @@ static void	writedigits(int n, int fd, int *wlen)
 	}
 }
 
-void	printint(int n, int fd, int *wlen)
+void	printunsignedint(unsigned int n, int fd, int *wlen)
 {
-	char	minus;
 
-	minus = '-';
-	if (n == -2147483648)
-	*wlen += write(fd, "-2147483648", 11);
-	else if (n == 0)
+	if (n == 0)
 	*wlen += write(fd, "0", 1);
-	else if (n < 0)
-	{
-		*wlen += write(fd, &minus, 1);
-		writedigits(n * -1, fd, wlen);
-	}
 	else
 		writedigits(n, fd, wlen);
 }
