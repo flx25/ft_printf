@@ -6,7 +6,7 @@
 /*   By: fvon-nag <fvon-nag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:08:04 by fvon-nag          #+#    #+#             */
-/*   Updated: 2023/01/10 16:12:26 by fvon-nag         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:14:53 by fvon-nag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-void	putchar(char c, int *wlen)
+void	ft_putchar(char c, int *wlen)
 {
 	*wlen += write(1, &c, 1);
 }
@@ -50,7 +50,7 @@ void	printstring(va_list *vl, int *wlen)
 void	format(char c, va_list *vl, int *wlen)
 {
 	if (c == 'c')
-		putchar(va_arg(*vl, int), wlen);
+		ft_putchar(va_arg(*vl, int), wlen);
 	if (c == 's')
 		printstring(vl, wlen);
 	if (c == 'i' || c == 'd')
@@ -62,7 +62,7 @@ void	format(char c, va_list *vl, int *wlen)
 	if (c == 'x' || c == 'X')
 		printhex(c, va_arg(*vl, unsigned int), wlen);
 	if (c == '%')
-		putchar('%', wlen);
+		ft_putchar('%', wlen);
 }
 
 int	ft_printf(const char *fmt, ...)
