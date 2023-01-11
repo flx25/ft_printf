@@ -6,7 +6,7 @@
 #    By: fvon-nag <fvon-nag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 13:59:11 by fvon-nag          #+#    #+#              #
-#    Updated: 2023/01/10 16:13:52 by fvon-nag         ###   ########.fr        #
+#    Updated: 2023/01/11 09:03:25 by fvon-nag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,6 @@ all: ${NAME}
 clean :
 	rm -f $(OBJECTS)
 fclean : clean
-	rm -f $(NAME) $(NAME).a
+	rm -f $(NAME)
 re : fclean all
 
